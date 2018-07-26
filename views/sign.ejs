@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Sign Up</title>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/index">Personal Finance</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/index">Home</a></li>
+              <li><a href="archives">Archives</a></li>
+              <li><a href="/new">New Blog Post</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+          </div>
+        </nav>
+
+            <div class="row">
+                <div class="jumbotron">
+                    <h2>Create A New Account</h2>
+                    <p>Come join the finance community? Let's set up your account.Already have one?<a href="/login">Login in here</a></p>
+                </div>
+            </div>
+
+              <div class="row">
+                <div class="jumbotron form">
+
+                          <form method="POST" action="/login" >
+                            <div class="form-group">
+                              <label for="Username">Username</label>
+                              <input type="text" class="form-control" placeholder="username"
+                              id="username" name="username">
+                            </div>
+                          <div class="form-group">
+                            <label for="Email">Email Address</label>
+                            <input type="text" class="form-control"
+                            placeholder="Email" id="Email" name="Email">
+                          </div>
+
+                            <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="text" class="form-control"
+                          placeholder="password" id="password" name="password">
+                        </div>
+
+
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                </div>
+              </div>
+                  <div class="panel panel-default">
+                      <div class="panel-footer">Created by Aqhamile Cimani |2018</div>
+                </div>
+        </div>
+      </div>
+
+
+
+  </body>
+</html>

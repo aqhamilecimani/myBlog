@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>New</title>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/index">Personal Finance</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/index">Home</a></li>
+              <li><a href="archives">Archives</a></li>
+              <li><a href="/new">New Blog Post</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+          </div>
+        </nav>
+
+
+        <form method="POST" action="/new" class="form1">
+          <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" placeholder="Title"
+            id="title" name="title">
+          </div>
+        <div class="form-group">
+          <label for="Author">Author</label>
+          <input type="text" class="form-control"
+          placeholder="Author" id="Author" name="Author">
+        </div>
+
+        <div class="form-group">
+          <label for="datetime">Date</label>
+          <input type="date" class="form-control"
+          placeholder="date" id="date" name="date">
+
+        </div>
+          <div class="form-group">
+        <label for="datetime">Time</label>
+        <input type="time" class="form-control"
+        placeholder="time" id="time" name="time">
+      </div>
+          <div class="form-group">
+        <label for="image">Image url</label>
+        <input type="text" class="form-control"
+        placeholder="image" id="image" name="image">
+      </div>
+
+
+
+
+          <textarea id="summernote" name="content"></textarea>
+
+        <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-footer">Created by Aqhamile Cimani |2018</div>
+              </div>
+        </div>
+        </div>
+
+
+          <!--script tags for the summernote   -->
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+          $('#summernote').summernote();
+        });
+
+        </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Archives</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div class="container">
+
+<div class="row">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/index">Personal Finance</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/index">Home</a></li>
+        <li><a href="archives">Archives</a></li>
+        <li><a href="/new">New Blog Post</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+</div>
+<div class="row">
+  <div class="jumbotron">
+    <h1>Personal Finance</h1>
+
+  </div>
+</div>
+
+<div class="row">
+  <% if (posts) { %>
+
+    <% posts.forEach(function(post){ %>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <div class="panel panel-primary">
+
+          <div class="panel-heading">
+            <h3 class="panel-title"><h3><%= post.title %></h3></h3>
+          </div>
+
+          <div class="panel-body">
+            <img src="<%=post.image %>" alt=""width="100%" >
+            <p> <%-post.content %></p>
+            <a  href="/view/<%= post.id %>"><button type="button" class="btn btn-primary">Read more</button></a>
+          </div>
+          <div class="panel-footer">
+            <p>Author: <%- post.author %></p>
+            <p>Date: <%= post.date %></p>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+
+      <% } else { %>
+
+        <p>You have no blog posts</p>
+
+        <% } %>
+
+      </div>
+    </div>
+
+</body>
+</html>
