@@ -1,20 +1,17 @@
 var express = require('express');
-
 var router = express.Router();
 var request = require('request');
-
-
 //can import code directly from finalmaybecompressed
 var Posts =require('../db.json');
 
 /* GET home page. */
 router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Home',posts:Posts.posts });
+  res.render('index', { title: 'Personal Finance',posts:Posts.posts });
 });
 
 /* get new page. */
-router.get('/new', function(req, res, next) {
-  res.render('new');
+router.get('/new', function (req, res, next) {
+  res.render('new', { title: 'New Article', posts: posts.posts});
 });
 
 /* get login page. */
@@ -25,6 +22,7 @@ router.get('/login', function(req, res, next) {
 /* get Sign Up  page. */
 router.get('/sign', function(req, res, next) {
   res.render('sign');
+  res.redirect('/index');
 });
 
 /* get view   page. */
@@ -39,7 +37,6 @@ router.get('/archives', function (req, res, next) {
 res.render('archives', { title: 'New Article', posts: Posts.posts});
 });
 module.exports = router;
-
 
 //post new Page
 router.post('/new', function(req, res, next) {
@@ -88,8 +85,9 @@ request({
      res.redirect('/index');
  });
 });
+
 // UPDATE ROUTES
-router.get('/update/:id', function(req, res, next) {
+router.get('/updates/:id', function(req, res, next) {
 
  //make a post request to our database
  request({
@@ -98,12 +96,12 @@ router.get('/update/:id', function(req, res, next) {
  }, function(error, response, body) {
      console.log(JSON.parse(body));
      //send a response message
-     res.render('update', {message: false, posts: JSON.parse(body)});
+     res.render('updates', {message: false, posts: JSON.parse(body)});
  });
 
 });
 
-router.post('/update/:id', function(req, res, next) {
+router.post('/updates/:id', function(req, res, next) {
  request({
    uri: "http://localhost:8000/posts/" + req.params.id,
  method: "PATCH",
@@ -115,9 +113,34 @@ router.post('/update/:id', function(req, res, next) {
  }, function(error, response, body) {
      // console.log(body);
      //send a response message
-     res.render('update', {message: 'Successfully Changed.', posts: JSON.parse(body)});
+     res.render('updates', {message: 'Successfully Changed.', posts: JSON.parse(body)});
  });
 });
+
+ // //make a post request to our database
+ // request({
+ // uri: "http://localhost:8000/posts/" + req.params.id,
+ // method: "GET",
+ // }, function(error, response, body) {
+ //     console.log(JSON.parse(body));
+ //     //send a response message
+ //     res.render('update', {message: false, posts: JSON.parse(body)});
+ // });
+// router.post('/updates/:id', function(req, res, next) {
+//  request({
+//    uri: "http://localhost:8000/posts/" + req.params.id,
+//  method: "PATCH",
+//  form: {
+//      title: req.body.title,
+//      content: req.body.content,
+//      author: req.body.author
+//  }
+//  }, function(error, response, body) {
+     // console.log(body);
+     //send a response message
+//      res.render('updates', {message: 'Successfully Changed.', posts: JSON.parse(body)});
+//  });
+// });
 
 
 

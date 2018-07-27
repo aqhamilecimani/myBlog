@@ -49,11 +49,11 @@
 
           <div class="panel-body">
             <img src="<%=post.image %>" alt=""width="100%" >
-            <p> <%-post.content %></p>
-            <a  href="/view/<%= post.id %>"><button type="button" class="btn btn-primary">Read more</button></a>
+            <p> <%-post.summary %></p>
+            <a  href="/view/<%= posts.id %>"><button type="button" class="btn btn-primary">Read more</button></a>
           </div>
           <div class="panel-footer">
-            <p>Author: <%- post.author %></p>
+            <p>Author: <%- post.Author %></p>
             <p>Date: <%= post.date %></p>
           </div>
         </div>
