@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-    margin-top: 50px !important;
+  margin-top: 50px !important;
   background-color: grey;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -24,9 +24,7 @@ box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 1.0);
 .pnael-primary{
   border-color: none;
 }
-.btn{
-  background-color: green;
-}
+
 #post{
   top: 700px;
   left: 100px;

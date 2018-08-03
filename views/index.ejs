@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
@@ -23,7 +24,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="" data-toggle="modal" data-target="#modalLoginForm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </nav>
@@ -42,6 +43,7 @@
     <% posts.forEach(function(post){ %>
 
 
+        <div class="col-xs-12 col-md-6 col-lg-4">
 
       <div class="panel panel-primary">
 
@@ -50,9 +52,9 @@
         </div>
 
         <div class="panel-body">
-            <img src="<%=post.image %>" alt=""width="100%" height="">
+            <img src="<%=post.image %>" alt=""width="100%">
           <p> <%-post.summary %></p>
-<a class="btn-primary btn-lg" href="/view/<%= post.id %>" role="button">Read more</a>
+            <a class="btn-success btn-lg" href="/view/<%= post.id %>" role="button">Read more</a>
         </div>
         <div class="panel-footer">
           <p>Author: <%- post.Author %></p>
@@ -63,27 +65,9 @@
 </div>
 
 
-  <!-- <h1><%= title %></h1>
-  <div class="panel panel-primary">
-
-    <div class="panel-heading">
-      <h3 class="panel-title">Panel Title</h3>
-    </div>
-
-    <div class="panel-body">
-      Panel content
-    </div>
-    <div class="panel-footer">
-      Panel footer
-    </div>
-  </div>
-  <p>Welcome to <%= title %></p> -->
-
-
-
-
-
+ </div>
 </div>
+
 
 
     <% }); %>
@@ -93,6 +77,63 @@
     <p>You have no blog posts</p>
 
   <% } %>
+
+  <div class="container">
+<div class="row">
+    <div class="span12">
+    <div class="thumbnail center well well-small text-center">
+            <h2>Newsletter</h2>
+
+            <h4 class="media-heading text-success">
+                    Personal Finance Community
+            </h4>
+
+            <p>Subscribe to our weekly Newsletter and stay tuned.</p>
+
+            <form action="" method="post">
+                <div class="input-prepend"><span class="add-on"><i class="icon-envelope"></i></span>
+                    <input type="text" id="" name="" placeholder="your@email.com">
+                </div>
+                <br />
+                      <button type="submit" class="btn btn-primary">Subscribe Now!</button>
+                <!-- <input type="submit" value="Subscribe Now!" class="btn btn-large" /> -->
+          </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    <input type="email" id="defaultForm-email" class="form-control validate">
+                    <label for="defaultForm-email">Your email</label>
+                </div>
+
+                <div class="md-form mb-4">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input type="password" id="defaultForm-pass" class="form-control validate">
+                    <label for="defaultForm-pass">Your password</label>
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-success">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
             <div class="panel panel-default">
                 <div class="panel-footer">Created by Aqhamile Cimani |2018</div>
           </div>

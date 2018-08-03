@@ -1,17 +1,36 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-//can import code directly from finalmaybecompressed
 var Posts =require('../db.json');
+//can import code directly from finalmaybecompressed
 
 /* GET home page. */
 router.get('/index', function(req, res, next) {
   res.render('index', { title: 'Personal Finance',posts:Posts.posts });
 });
+router.post('/login',function(req,res,next){
+  var user=Posts.users;
+  console.log(user)
+  var name=req.body.name;
+  var password=req.body.password;
+
+  for(let i in user){
+  console.log(name);
+  if(name == user.name && password == user.password){
+  alert("Welcome to PFC");
+} else{
+  alert("try again");
+  alert(user);
+}
+
+}
+});
 
 /* get new page. */
 router.get('/new', function (req, res, next) {
-  res.render('new', { title: 'New Article', posts: posts.posts});
+  var id = req.params.id;
+  var data = Posts.posts[id-1];
+  res.render('new', { title: 'New Article', posts: Posts.posts});
 });
 
 /* get login page. */
@@ -34,14 +53,13 @@ router.get('/view/:id', function (req, res, next) {
 
 /* GET archive page. */
 router.get('/archives', function (req, res, next) {
+  var id=req.params.id;
+  var data=Posts.posts[id-1];
 res.render('archives', { title: 'New Article', posts: Posts.posts});
 });
-module.exports = router;
 
 //post new Page
 router.post('/new', function(req, res, next) {
-//res.send(req.body)
-//create variable to posts
 
 let obj ={
 "title":req.body.title,
@@ -49,8 +67,10 @@ let obj ={
 "image":req.body.image,
 "date":req.body.date,
 "time":req.body.time,
-"content":req.body.content,
+"summary":req.body.summary
 }
+
+
 //write logic that saves this data
 request.post({
   url:"http://localhost:8000/posts",
@@ -60,13 +80,6 @@ request.post({
   //what to send when function has finished
   res.redirect('/index');
 });
-});
-
-/* GET article page. */
-router.get('/article1', function(req, res, next) {
-  var id = req.params.id;
-  var data = blogs.blogs[id-1];
-  res.render('article1');
 });
 
 //DELETE BUTTON
@@ -87,61 +100,26 @@ request({
 });
 
 // UPDATE ROUTES
-router.get('/updates/:id', function(req, res, next) {
 
- //make a post request to our database
- request({
- uri: "http://localhost:8000/posts/" + req.params.id,
- method: "GET",
- }, function(error, response, body) {
-     console.log(JSON.parse(body));
-     //send a response message
-     res.render('updates', {message: false, posts: JSON.parse(body)});
- });
-
+router.get('/updates/:id', function (req, res, next) {
+  var id=req.params.id;
+  var data=Posts.posts[id];
+  res.render('updates', { title: 'updates', posts: data});
 });
 
-router.post('/updates/:id', function(req, res, next) {
- request({
-   uri: "http://localhost:8000/posts/" + req.params.id,
- method: "PATCH",
- form: {
-     title: req.body.title,
-     content: req.body.content,
-     author: req.body.author
- }
- }, function(error, response, body) {
-     // console.log(body);
-     //send a response message
-     res.render('updates', {message: 'Successfully Changed.', posts: JSON.parse(body)});
+router.post('/updates/:id',function(req,res,next){
+  request({
+    url: "http://localhost:8000/posts/" + req.params.id,
+  method: "PATCH",
+  form: {
+      "title": req.body.title,
+      "content": req.body.content,
+      "author": req.body.Author,
+  }
+  }, function(error, response, body) {
+  res.redirect('/archives')
+  });
  });
-});
-
- // //make a post request to our database
- // request({
- // uri: "http://localhost:8000/posts/" + req.params.id,
- // method: "GET",
- // }, function(error, response, body) {
- //     console.log(JSON.parse(body));
- //     //send a response message
- //     res.render('update', {message: false, posts: JSON.parse(body)});
- // });
-// router.post('/updates/:id', function(req, res, next) {
-//  request({
-//    uri: "http://localhost:8000/posts/" + req.params.id,
-//  method: "PATCH",
-//  form: {
-//      title: req.body.title,
-//      content: req.body.content,
-//      author: req.body.author
-//  }
-//  }, function(error, response, body) {
-     // console.log(body);
-     //send a response message
-//      res.render('updates', {message: 'Successfully Changed.', posts: JSON.parse(body)});
-//  });
-// });
-
 
 
 module.exports = router;
