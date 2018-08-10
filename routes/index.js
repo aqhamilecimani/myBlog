@@ -101,9 +101,10 @@ request({
 
 // UPDATE ROUTES
 
+
 router.get('/updates/:id', function (req, res, next) {
   var id=req.params.id;
-  var data=Posts.posts[id];
+  var data=Posts.posts[id-1];
   res.render('updates', { title: 'updates', posts: data});
 });
 
@@ -112,9 +113,12 @@ router.post('/updates/:id',function(req,res,next){
     url: "http://localhost:8000/posts/" + req.params.id,
   method: "PATCH",
   form: {
-      "title": req.body.title,
-      "content": req.body.content,
-      "author": req.body.Author,
+    "title" : req.body.title,
+    "author" : req.body.Author,
+    "date" : req.body.date,
+    "image":req.body.image,
+    "content" : req.body.content,
+    "story" : req.body.story,
   }
   }, function(error, response, body) {
   res.redirect('/archives')
